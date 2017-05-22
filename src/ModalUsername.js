@@ -14,31 +14,28 @@ class ModalUsername extends Component {
 		this.state = {
 			showModal: props.showModal
 		};
-	}
+	};
 
-	close() {
+	close = () => {
 		this.setState({ showModal: false });
-	}
-
-	open() {
-		this.setState({ showModal: true });
-	}
+		this.props.onModalExit(this.username.value);
+	};
 
 	render() {
 		return (
 			<div>
-				<Modal show={this.state.showModal} onHide={this.close.bind(this)} keyboard={false}>
+				<Modal show={this.state.showModal} onHide={this.close} keyboard={false}>
 					<Modal.Header closeButton>
 						<Modal.Title>Bem vindo!</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
 						<FormGroup controlId="form-username">
 							<ControlLabel>Para continuar, nos diga seu nome.</ControlLabel>
-							<FormControl type="text" placeholder="Nome" />
+							<FormControl type="text" placeholder="Nome" inputRef={(username) => {this.username = username}} componentClass="input" />
 						</FormGroup>
 					</Modal.Body>
 					<Modal.Footer>
-						<Button bsStyle="primary" onClick={this.close.bind(this)}>Continuar</Button>
+						<Button bsStyle="primary" onClick={this.close}>Continuar</Button>
 					</Modal.Footer>
 				</Modal>
 			</div>
