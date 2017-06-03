@@ -5,14 +5,22 @@ import './App.css';
 
 class App extends Component {
 
-	onModalExit = (username) => {
+	constructor(props) {
+		super(props);
+		this.state = {
+			username: 'wilde'
+		};
+	};
+
+	onUsernameChange = (username) => {
+		console.log(username);
 		this.setState({ username: username });
-	}
+	};
 
 	render() {
 		return (
 			<div className="body-padding">
-				<ModalUsername showModal={false} onModalExit={this.onModalExit} />
+				<ModalUsername showModal={true} onUsernameChange={this.onUsernameChange} />
 				<ChatInput className="navbar navbar-default navbar-fixed-bottom body-padding"/>
 			</div>
 		);

@@ -18,7 +18,10 @@ class ModalUsername extends Component {
 
 	close = () => {
 		this.setState({ showModal: false });
-		this.props.onModalExit(this.username.value);
+	};
+
+	handleUsernameChange = (username) => {
+		this.props.onUsernameChange(username.target.value);
 	};
 
 	render() {
@@ -31,7 +34,7 @@ class ModalUsername extends Component {
 					<Modal.Body>
 						<FormGroup controlId="form-username">
 							<ControlLabel>Para continuar, nos diga seu nome.</ControlLabel>
-							<FormControl type="text" placeholder="Nome" inputRef={(username) => {this.username = username}} componentClass="input" />
+							<FormControl type="text" placeholder="Nome" value={this.props.username} onChange={this.handleUsernameChange} componentClass="input" />
 						</FormGroup>
 					</Modal.Body>
 					<Modal.Footer>
