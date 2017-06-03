@@ -1,0 +1,23 @@
+.full-message {
+	margin-bottom: 10px;
+}
+
+.message {
+	border-radius: 5px;
+	display: inline-block;
+	padding: 10px;
+}
+
+.message.yourself {
+	background-color: #C7EDFC;
+}
+
+.message.other {
+	background-color: #F0F0F0;
+}
+
+.sender {
+	margin: 0;
+	font-size: 12px;
+	font-weight: bold;
+}
