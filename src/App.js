@@ -13,14 +13,13 @@ class App extends Component {
 	};
 
 	onUsernameChange = (username) => {
-		console.log(username);
 		this.setState({ username: username });
 	};
 
 	render() {
 		return (
 			<div className="body-padding">
-				<ModalUsername showModal={true} onUsernameChange={this.onUsernameChange} />
+				<ModalUsername showModal={false} username={this.state.username} onUsernameChange={this.onUsernameChange} />
 				<ChatInput className="navbar navbar-default navbar-fixed-bottom body-padding"/>
 			</div>
 		);
