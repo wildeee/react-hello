@@ -26,3 +26,10 @@
 .body-padding {
 	padding: 15px;
 }
+
+.messages-area-container {
+	padding-top: 15px;
+	width: 100%;
+    padding-bottom: 100px;
+    display: inline-block;
+}

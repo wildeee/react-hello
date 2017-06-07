@@ -31,7 +31,7 @@ class App extends Component {
 	render() {
 		const styleChat = 'navbar navbar-default navbar-fixed-bottom body-padding';
 		return (
-			<div className="body-padding">
+			<div className="messages-area-container">
 				<ModalUsername showModal={false} username={this.state.username} onUsernameChange={this.onUsernameChange} />
 				<MessagesArea messages={MESSAGES} />
 				<ChatInput className={styleChat} />
