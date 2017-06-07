@@ -10,9 +10,7 @@ class Message extends Component {
 			messageStyle += ' yourself';
 			fullMessageStyle += ' pull-right'
 		} else {
-			sender = (<div>
-						<p className="sender">{this.props.sender}:</p>
-					</div>);
+			sender = <p className="sender">{this.props.sender}:</p>;
 			messageStyle += ' other';
 		}
 		return (
