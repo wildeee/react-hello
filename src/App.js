@@ -21,7 +21,7 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			username: 'wilde',
+			username: '',
 			messages: MESSAGES
 		};
 	};
@@ -45,7 +45,7 @@ class App extends Component {
 	render() {
 		return (
 			<div className="messages-area-container">
-				<ModalUsername showModal={false} username={this.state.username} onUsernameChange={this.onUsernameChange} />
+				<ModalUsername showModal={true} username={this.state.username} onUsernameChange={this.onUsernameChange} />
 				<MessagesArea messages={this.state.messages} />
 				<ChatInput onMessageSend={this.onMessageSend} />
 			</div>
