@@ -5,7 +5,7 @@ import Message from './Message.js'
 class MessagesArea extends Component {
 
 	componentDidUpdate(){
-		scroll.scrollToBottom();
+		scroll.scrollToBottom({ignoreCancelEvents: true});
 	};
 
 	render() {

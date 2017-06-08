@@ -21,18 +21,25 @@ class ChatInput extends Component {
 	};
 
 	enviarMensagem = () => {
-		this.props.onMessageSend(this.state.message);
+		const message = this.state.message;
+		if (message) {
+			this.props.onMessageSend(this.state.message);
+			this.setState({ message: '' });
+		}
+	};
+
+	handleKeyPress = (event) => {
+		if (event.key === 'Enter') {
+			this.enviarMensagem();
+		}
 	};
 
 	render() {
-		const textareaStyle = {
-			resize: 'none'
-		};
 		return (
 			<div className="navbar navbar-default navbar-fixed-bottom body-padding">
 				<FormGroup controlId="formControlsTextarea">
 					<InputGroup>
-						<FormControl style={textareaStyle} value={this.state.message} onChange={this.handleMessageChange} componentClass="textarea" placeholder="Digite algo aqui..." />
+						<FormControl className='chat-input' value={this.state.message} onChange={this.handleMessageChange} onKeyPress={this.handleKeyPress} placeholder="Digite algo aqui..." />
 						<InputGroup.Button className="btn-vertical-block">
 							<Button className="btn-vertical-block" bsStyle="primary" onClick={this.enviarMensagem}>Enviar</Button>
 						</InputGroup.Button>
