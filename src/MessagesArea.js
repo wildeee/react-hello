@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import {animateScroll as scroll} from 'react-scroll'
 import Message from './Message.js'
 
 class MessagesArea extends Component {
+
+	componentDidUpdate(){
+		scroll.scrollToBottom();
+	};
+
 	render() {
 		const messages = this.props.messages.map((message) => {
 			return (
