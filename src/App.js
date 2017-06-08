@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ModalUsername from './ModalUsername.js';
 import MessagesArea from './MessagesArea.js';
 import ChatInput from './ChatInput.js'
+import { SocketProvider } from 'socket.io-react';
+import io from 'socket.io-client';
 import './App.css';
 
 let key = 1;
@@ -22,7 +24,8 @@ class App extends Component {
 		super(props);
 		this.state = {
 			username: '',
-			messages: MESSAGES
+			messages: MESSAGES,
+			socket: io.connect(process.env.SOCKET_URL || 'http://localhost:8080')
 		};
 	};
 
@@ -32,13 +35,15 @@ class App extends Component {
 
 	onMessageSend = (message) => {
 		let messages = this.state.messages;
-		messages.push({
+		let newMessage = {
 			sender: this.state.username,
 			message: message,
 			yourMessage: true,
 			timestamp: new Date(),
 			key: key++
-		});
+		};
+		messages.push(newMessage);
+		this.state.socket.emit('chat message', newMessage);
 		this.setState({ messages: messages });
 	};
 
